@@ -5,7 +5,21 @@ fn main() {
 
     let args: Vec<String> = env::args().collect();
 
-    let file_path = &args[1];
+    match args.len() {
+        1 => {
+            eprintln!("No arguments are provided. No idea on what file to read.");
+            return;
+        }
+        2 => {
+        }
+        _ => {
+            eprintln!("Why to provide extra arguments when work can be done with only one");
+            return;
+        }
+    }
+
+
+    let file_path =&args[1];
     // Read the contents of the json file
     let config_contents = match fs::read_to_string(file_path) {
         Ok(contents) => contents,
